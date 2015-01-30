@@ -1,0 +1,9 @@
+development:
+  adapter: postgresql
+  database: band_venue_tracker
+  template: template0
+
+test:
+  adapter: postgresql
+  database: band_venue_tracker_test
+  template: template0
