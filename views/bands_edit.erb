@@ -1,0 +1,45 @@
+<h3><%= @band.name() %></h3>
+
+<p>Select the venues where this band has played:</p>
+
+  <% if @venues.any?() %>
+    <form action="/bands/<%= @band.id %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+
+      <% @venues.alphabetize().each() do |venue| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="venue_ids[]" value="<%= venue.id() %>"><%= venue.name() %>
+          </label>
+        </div>
+      <% end %>
+
+      <button type="submit" class="primary">Add Venues</button>
+    </form>
+  <% end %>
+<br />
+<% if @band.venues().any?() %>
+  <h4>Current list of venues where this band has played:</h4>
+
+  <ul>
+    <% @band.venues().alphabetize().each do |venue| %>
+      <li><%= venue.name() %></li>
+    <% end %>
+  </ul>
+<% end %>
+<br />
+<h4>Edit the Band "<%= @band.name() %>"</h4>
+  <form action="/bands/<%= @band.id() %>/edit" method="post">
+    <input type="hidden" name="_method" value="patch">
+    <label for="name">Rename Band:</label>
+    <input id="name" name="name" type="text">
+    <button type="submit" class="primary">Update</button>
+  </form>
+<br />
+<h4>Delete the Band "<%= @band.name() %>"</h4>
+  <form action="/bands/<%= @band.id() %>/delete" method="post">
+    <input name="_method" type="hidden" value="delete">
+    <button type="submit" class="primary">Delete</button>
+  </form>
+<br />
+<p><a href="/">Return to Home Page</a></p>

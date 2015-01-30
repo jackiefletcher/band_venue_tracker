@@ -1,0 +1,25 @@
+<h3>Add a Band</h3>
+
+<form action="/bands" method="post">
+  <div class="form-group"
+    <label for="name">Band Name:</label>
+    <input id="name" name="name" type="text">
+  </div>
+  <button type="submit">Add Band</button>
+</form>
+
+<h3>Current Bands</h3>
+
+<% if @bands.any?() %>
+<p>Click on a band to see what venues they have played at, and update the band information</p>
+
+<ul>
+  <% @bands.alphabetize().each do |band| %>
+  <li><a href="/bands/<%= band.id() %>"><%= band.name() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>No bands have been added.</p>
+<% end %>
+
+<a href="/">Return to Home Page</a>

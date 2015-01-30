@@ -1,0 +1,9 @@
+<h3>Uh oh! Looks like you had an error:</h3>
+
+<ul>
+  <% @venue.errors().full_messages().each() do |message| %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+<br />
+<p><a href="/">Return to Home Page and try again!</a></p>

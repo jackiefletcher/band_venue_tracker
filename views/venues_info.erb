@@ -1,0 +1,16 @@
+<h3><%= @venue.name() %></h3>
+
+<% if @venue.bands().any?() %>
+<h4>Current list of bands that have played at this venue:</h4>
+
+<ul>
+  <% @venue.bands().alphabetize().each do |band| %>
+  <li><%= band.name() %></li>
+  <% end %>
+</ul>
+<% else %>
+  <p>No bands have played at this venue!</p>
+<% end %>
+
+<br />
+<a href="/">Return to Home Page</a>

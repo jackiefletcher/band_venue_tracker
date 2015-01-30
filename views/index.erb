@@ -1,0 +1,32 @@
+<h1>Band and Venue Tracker</h1>
+
+<p><a href="/bands">Add a Band</a></p>
+<p><a href="/venues">Add a Venue</a></p>
+
+<h3>Current Bands</h3>
+
+<% if @bands.any?() %>
+  <p>Click on a band to see what venues they have played at, and update the band information</p>
+
+    <ul>
+      <% @bands.alphabetize().each do |band| %>
+        <li><a href="/bands/<%= band.id() %>"><%= band.name() %></a></li>
+      <% end %>
+    </ul>
+<% else %>
+  <p>No bands have been added. Click the link above to add some bands!</p>
+<% end %>
+
+<h3>Current Venues</h3>
+
+<% if @venues.any?() %>
+  <p>Click on a venue to see what bands have played there.</p>
+
+  <ul>
+    <% @venues.alphabetize().each do |venue| %>
+      <li><a href="/venues/<%= venue.id() %>"><%= venue.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No venues have been added. Click the link above to add some venues!</p>
+<% end %>
